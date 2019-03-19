@@ -5,7 +5,7 @@ import time
 from fractions import Fraction
 
 camera = picamera.PiCamera()
-camera.resolution = (1280, 720)
+camera.resolution = (1920, 1080)
 camera.led = False
 # Die erste Version des Kameramoduls hat unter der Kamera eine rote LED
 # benutzt man einen Rasperry Pi 1, 2 oder Zero kann die LED mit dieser
