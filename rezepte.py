@@ -6,11 +6,6 @@ from fractions import Fraction
 
 camera = picamera.PiCamera()
 camera.resolution = (1920, 1080)
-camera.led = False
-# Die erste Version des Kameramoduls hat unter der Kamera eine rote LED
-# benutzt man einen Rasperry Pi 1, 2 oder Zero kann die LED mit dieser
-# Methode gesteuert werden. Da die LED besonders bei Nachtaufnahmen stören
-# kann, wird sie hier ausgeschaltet
 camera.vflip = True
 camera.hflip = True
 
@@ -124,9 +119,3 @@ def NachtTest():
         print('Bild geschossen mit einer Belichtung von ' +
               str(Belichtungszeit) + ' Sekunden')
         Belichtungszeit -= 1
-
-    while True:
-        camera.led = True
-        time.sleep(3)
-        camera.led = False
-        time.sleep(0.5)
