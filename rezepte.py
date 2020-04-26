@@ -5,6 +5,15 @@ import blinkt
 import time
 from fractions import Fraction
 
+def blinktNotify(r,g,b):
+    for x in range(5):
+        blinkt.set_all = (r, g, b, 0.5)
+        blinkt.show()
+        time.sleep(0.5)
+        blinkt.clear()
+        blinkt.clear()
+        time.sleep(0.5)
+
 try:
     camera = picamera.PiCamera()
     blinktNotify(0, 255, 0)
@@ -12,12 +21,9 @@ except PiCameraError:
     print('Camera not found')
     blinktNotify(255, 0, 0)
 
-
-
 camera.resolution = (1920, 1080)
 camera.vflip = True
 camera.hflip = True
-
 
 def ZeichenketteErstellen():
     """Diese Funktion erstellt einen String mit dem Dateipfad und einem
@@ -128,12 +134,3 @@ def NachtTest():
         print('Bild geschossen mit einer Belichtung von ' +
               str(Belichtungszeit) + ' Sekunden')
         Belichtungszeit -= 1
-
-def blinktNotify(r,g,b):
-    for x in range(5):
-        blinkt.set_all = (r, g, b, 0.5)
-        blinkt.show()
-        time.sleep(0.5)
-        blinkt.clear()
-        blinkt.clear()
-        time.sleep(0.5)
