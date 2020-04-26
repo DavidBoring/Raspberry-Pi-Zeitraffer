@@ -1,1 +1,0 @@
-In diesem Verzeichnis speichert das Programm später die Bilder
