@@ -1,10 +1,25 @@
 import string
 import random
 import picamera
+import blinkt
 import time
 from fractions import Fraction
 
-camera = picamera.PiCamera()
+try:
+    camera = picamera.PiCamera()
+    blinkt.set_all = (0, 255, 0, 0.5)
+    for x in range(5):
+        blinkt.show()
+        time.sleep(0.5)
+        blinkt.clear()
+        time.sleep(0.5)
+
+
+except PiCameraError:
+    print('Camera not found')
+
+
+
 camera.resolution = (1920, 1080)
 camera.vflip = True
 camera.hflip = True
