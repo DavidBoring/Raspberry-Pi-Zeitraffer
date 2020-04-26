@@ -7,16 +7,10 @@ from fractions import Fraction
 
 try:
     camera = picamera.PiCamera()
-    blinkt.set_all = (0, 255, 0, 0.5)
-    for x in range(5):
-        blinkt.show()
-        time.sleep(0.5)
-        blinkt.clear()
-        time.sleep(0.5)
-
-
+    blinktNotify(0, 255, 0)
 except PiCameraError:
     print('Camera not found')
+    blinktNotify(255, 0, 0)
 
 
 
@@ -134,3 +128,12 @@ def NachtTest():
         print('Bild geschossen mit einer Belichtung von ' +
               str(Belichtungszeit) + ' Sekunden')
         Belichtungszeit -= 1
+
+def blinktNotify(r,g,b):
+    for x in range(5):
+        blinkt.set_all = (r, g, b, 0.5)
+        blinkt.show()
+        time.sleep(0.5)
+        blinkt.clear()
+        blinkt.clear()
+        time.sleep(0.5)
