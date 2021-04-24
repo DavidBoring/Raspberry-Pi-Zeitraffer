@@ -30,7 +30,7 @@ def TagAufnahme(ZeitZwischenBildern=5, ZeitVorStart=30):
     jedoch mindestens einen Wert von 30 haben, damit die Kamera Zeit hat sich
     an die Lichtverhältnisse anzupassen
     """
-    Dateiname = ZeichenketteErstellen() + '{counter:05d}.png'
+    Dateiname = ZeichenketteErstellen() + '{counter:05d}.jpg'
     camera.sharpness = 100
     camera.exposure_mode = 'auto'
     # Mögliche Werte: 'off', 'auto', 'night', 'nightpreview', 'backlight'
@@ -45,7 +45,7 @@ def TagAufnahme(ZeitZwischenBildern=5, ZeitVorStart=30):
         print('Noch ' + str(ZeitVorStart - x) +
               ' Sekunden bis die Aufnahme beginnt')
         time.sleep(1)
-    for filename in camera.capture_continuous(output=Dateiname, format='png'):
+    for filename in camera.capture_continuous(output=Dateiname, format='jpeg'):
         print('Bild aufgenommen %s' % filename)
         time.sleep(ZeitZwischenBildern)
 
@@ -75,13 +75,13 @@ def NachtAufnahme(Belichtungszeit=6):
     while True:
         counter = counter + 1
         if counter < 10:
-            camera.capture(Dateiname + '000' + str(counter) + '.png')
+            camera.capture(Dateiname + '000' + str(counter) + '.jpg')
         elif counter < 100:
-            camera.capture(Dateiname + '00' + str(counter) + '.png')
+            camera.capture(Dateiname + '00' + str(counter) + '.jpg')
         elif counter < 1000:
-            camera.capture(Dateiname + '0' + str(counter) + '.png')
+            camera.capture(Dateiname + '0' + str(counter) + '.jpg')
         else:
-            camera.capture(Dateiname + str(counter) + '.png')
+            camera.capture(Dateiname + str(counter) + '.jpg')
         print('Klick')
 
 
@@ -100,7 +100,7 @@ def NachtTest():
         camera.shutter_speed = 1000000 * Belichtungszeit
         time.sleep(3)
         camera.capture(Dateiname + '_' + str(Belichtungszeit) +
-                       '_Sekunden_Belichtung.png')
+                       '_Sekunden_Belichtung.jpg')
         print('Bild geschossen mit einer Belichtung von ' +
               str(Belichtungszeit) + ' Sekunden')
         Belichtungszeit -= 1
@@ -115,7 +115,7 @@ def NachtTest():
         camera.shutter_speed = 1000000 * Belichtungszeit
         time.sleep(3)
         camera.capture(Dateiname + '_' + str(Belichtungszeit) +
-                       'Sekunden_Belichtung_im_Sportmodus.png')
+                       'Sekunden_Belichtung_im_Sportmodus.jpg')
         print('Bild geschossen mit einer Belichtung von ' +
               str(Belichtungszeit) + ' Sekunden')
         Belichtungszeit -= 1
